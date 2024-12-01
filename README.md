@@ -24,6 +24,12 @@ Koristite sledeće API pozive za testiranje u alatu kao što je [Postman](https:
 | DELETE     | `/Item/delete-item/{itemId}`     | Brisanje item-a							|													|JWT: string   |
 | DELETE     | `/Item/delete-all-items`			| Brisanje svih item-a						|													|JWT: string   |
 
+Server je podesen da osluskuje na sledecim portovima:
+
+    -HTTP: 5031
+
+    -HTTPS: 7168
+
 ---
 ## **Docker komande**
 

@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add connections to storage
 builder.Services.AddDbContext<CustomDbContext>(options =>
-   options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection")));
 
 string? redisConnectionString = builder.Configuration.GetSection("Redis").GetSection("ConnectionString").Value;
 ConnectionMultiplexer? multiplexer = ConnectionMultiplexer.Connect(redisConnectionString!);
@@ -25,6 +25,19 @@ builder.Services.AddScoped<IItemService, ItemService>();
 //Bind classes to objects in appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
+//Setup CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithExposedHeaders("JWT", "RefreshToken");
+        });
+});
 
 var app = builder.Build();
 
@@ -40,6 +53,6 @@ app.UseCors("AllowOrigin");
 
 app.UseMiddleware<AuthMiddleware>();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.Run();
