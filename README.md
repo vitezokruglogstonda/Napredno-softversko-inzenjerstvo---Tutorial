@@ -1,6 +1,6 @@
 # Napredno-softversko-inzenjerstvo---Tutorial
 
-# ASP.NET Core API - Upravljanje Proizvodima
+# ASP.NET Core API
 
 Ovaj repozitorijum sadrži primer API-ja razvijenog u ASP.NET Core-u za demonstraciju RESTful API-ja, korišćenje EF Core-a i JWT autentifikacije.
 
@@ -10,12 +10,12 @@ Ovaj repozitorijum sadrži primer API-ja razvijenog u ASP.NET Core-u za demonstr
 
 Koristite sledeće API pozive za testiranje u alatu kao što je [Postman](https://www.postman.com/):
 
-| HTTP Metod | Endpoint                  | Opis                       |
-|------------|---------------------------|----------------------------|
-| GET        | `/api/products`           | Preuzimanje svih proizvoda |
-| GET        | `/api/products/{id}`      | Preuzimanje određenog proizvoda |
-| POST       | `/api/products`           | Kreiranje novog proizvoda  |
-| PUT        | `/api/products/{id}`      | Ažuriranje postojećeg proizvoda |
+| HTTP Metod | Endpoint                  | Opis                       | Request Body               | HTTP headers               |
+|------------|---------------------------|----------------------------|----------------------------|----------------------------|
+| POST       | `/Account/register`       | Registrovanje naloga       |{"email":<string>, "password":<string>}|
+| PUT        | `/Account/log-in`         | Logovanje korisnika        |{"email":<string>, "password":<string>}|
+| GET        | `/Account/log-out`        | Odjavljivanje sa naloga    ||JWT: <string>|
+| GET        | `/Account/create-admin`   | Kreiranje Admin naloga     |||
 | DELETE     | `/api/products/{id}`      | Brisanje proizvoda         |
 
 ---
