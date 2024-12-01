@@ -28,6 +28,8 @@ namespace Tutorial.Models.Database
         [JsonIgnore]
         public User? Owner { get; set; }
 
+        public Item() { }
+
         public Item(CreateItemRequest itemRequest, int userId)
         {
             Title = itemRequest.Title!;

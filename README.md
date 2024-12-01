@@ -45,9 +45,6 @@ docker network create pg-network
 docker pull postgres
 ```
 ```bash
-docker pull postgres
-```
-```bash
 docker run --name postgres-db --network pg-network -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=test -e POSTGRES_DB=exampleDb -p 5432:5432 -d postgres
 ```
 ```bash
