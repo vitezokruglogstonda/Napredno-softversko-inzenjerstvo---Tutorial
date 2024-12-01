@@ -21,10 +21,6 @@ namespace Tutorial.Controllers
             _itemService = ItemService;
         }
 
-        //get(all ili 1 item) post put delete metode da korisnici kreiraju iteme
-        //napravi servis i u njemu pokrij te metode
-        //delete all - samo za admina
-
         [HttpGet]
         [Route("get-all-items")]
         public async Task<ActionResult<List<Item>>> GetAllItems()

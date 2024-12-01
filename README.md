@@ -10,19 +10,19 @@ Ovaj repozitorijum sadrži primer API-ja razvijenog u ASP.NET Core-u za demonstr
 
 Koristite sledeće API pozive za testiranje u alatu kao što je [Postman](https://www.postman.com/):
 
-| HTTP Metod | Endpoint                  | Opis                       | Request Body               | HTTP headers               |
-|------------|---------------------------|----------------------------|----------------------------|----------------------------|
-| POST       | `/Account/register`       | Registrovanje naloga       |{"email":string, "password":string}|
-| PUT        | `/Account/log-in`         | Logovanje korisnika        |{"email":string, "password":string}|
-| GET        | `/Account/log-out`        | Odjavljivanje sa naloga    ||JWT: string|
-| GET        | `/Account/create-admin`   | Kreiranje Admin naloga     |||
-| GET        | `/Item/get-all-items`      | Pribavljanje svih item-a iz baze         |||
-| GET        | `/Item/get-users-items/{userId}`      | Pribavljanje svih item-a jednog korisnika         |||
-| GET        | `/Item/get-item/{itemId}`      | Pribavljanje item-a         |||
-| POST       | `/Item/publish-item`      | Postavljanje novog item-a         |{"title":string, "description":string}|JWT: string|
-| PUT        | `/Item/change-item`      | Promena atributa jednog item-a         |{"id":number, "title":string, "description":string}|JWT: string|
-| DELETE     | `/Item/delete-item/{itemId}`      | Brisanje item-a         ||JWT: string|
-| DELETE     | `/Item/delete-all-items`      | Brisanje svih item-a        ||JWT: string|
+| HTTP Metod | Endpoint                         | Opis										| Request Body										| HTTP headers |
+|------------|----------------------------------|-------------------------------------------|---------------------------------------------------|--------------|
+| POST       | `/Account/register`              | Registrovanje naloga						|{"email":string, "password":string}				|			   |
+| PUT        | `/Account/log-in`                | Logovanje korisnika						|{"email":string, "password":string}				|			   |
+| GET        | `/Account/log-out`               | Odjavljivanje sa naloga					|													|JWT: string   |
+| GET        | `/Account/create-admin`          | Kreiranje Admin naloga					|													|			   |
+| GET        | `/Item/get-all-items`            | Pribavljanje svih item-a iz baze          |													|			   |
+| GET        | `/Item/get-users-items/{userId}` | Pribavljanje svih item-a jednog korisnika |													|			   |
+| GET        | `/Item/get-item/{itemId}`        | Pribavljanje item-a						|													|			   |
+| POST       | `/Item/publish-item`             | Postavljanje novog item-a					|{"title":string, "description":string}				|JWT: string   |
+| PUT        | `/Item/change-item`				| Promena atributa jednog item-a			|{"id":number, "title":string, "description":string}|JWT: string   |
+| DELETE     | `/Item/delete-item/{itemId}`     | Brisanje item-a							|													|JWT: string   |
+| DELETE     | `/Item/delete-all-items`			| Brisanje svih item-a						|													|JWT: string   |
 
 ---
 ## **Docker komande**
@@ -56,6 +56,19 @@ docker pull dpage/pgadmin4
 ```bash
 docker run --name pg-admin --network pg-network -p 80:80 -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=password' -d dpage/pgadmin4
 ```
+#### **Povezivanje na bazu iz PgAdmin-a:**
+-Otvorite PgAdmin u browser-u: *ukucajte **localhost** u URL-u*.
+
+-U Object Explorer-u sa leve strane **desni klik na *Servers*** => **Register** => **Server..**
+
+-U novom prozoru u kartici *General* ukucajte ime vaseg servera (proizvoljno), a potom u kartici *Connection* unesite sledece podatke:
+	
+	- Host name/address: postgres-db
+	- Port: 5432
+	- Maintenance database: exampleDb
+	- Username: postgres
+	- Password: test
+
 
 ### **Migracija baze**
 ```bash
