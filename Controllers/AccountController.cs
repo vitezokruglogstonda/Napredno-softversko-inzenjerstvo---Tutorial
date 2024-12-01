@@ -22,12 +22,13 @@ namespace Tutorial.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<ActionResult<UserResponse>> Register([FromForm] string jsonDto)
+        public async Task<ActionResult<UserResponse>> Register([FromBody] RegisterRequest registerRequest)
         {
             try
             {
-                RegisterRequest? userDto = JsonConvert.DeserializeObject<RegisterRequest>(jsonDto) ?? throw new CustomException(400, "Incorrect user information.");
-                return Ok(await _accountService.AddNewUser(userDto, HttpContext));
+                if (registerRequest == null || String.IsNullOrEmpty(registerRequest.Email) || String.IsNullOrEmpty(registerRequest.Password))
+                    throw new CustomException(400, "Incorrect user information.");
+                return Ok(await _accountService.AddNewUser(registerRequest, HttpContext));
             }
             catch (CustomException ex)
             {

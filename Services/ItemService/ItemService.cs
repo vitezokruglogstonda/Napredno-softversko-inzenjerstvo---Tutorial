@@ -73,6 +73,7 @@ namespace Tutorial.Services.ItemService
             user.Items!.Remove(item);
 
             _dbContext.Update(user);
+            _dbContext.Remove(item);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -83,6 +84,7 @@ namespace Tutorial.Services.ItemService
 
         public async Task<List<Item>> GetAllUsersItems(int userId)
         {
+            User? user = await _dbContext.Users.FindAsync(userId) ?? throw new CustomException(404, "No user found.");
             return await _dbContext.Items
                 .Where(item => item.OwnerId == userId)
                 .ToListAsync();
@@ -90,7 +92,7 @@ namespace Tutorial.Services.ItemService
 
         public async Task<Item> GetItem(int itemId)
         {
-            return await _dbContext.Items.FindAsync(itemId) ?? throw new CustomException(400, "No item with given ID found.");
+            return await _dbContext.Items.FindAsync(itemId) ?? throw new CustomException(404, "No item with given ID found.");
         }
     }
 }

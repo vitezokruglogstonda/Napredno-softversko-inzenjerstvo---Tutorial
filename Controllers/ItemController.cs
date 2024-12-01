@@ -43,6 +43,10 @@ namespace Tutorial.Controllers
             {
                 return Ok(await _itemService.GetAllUsersItems(userId));
             }
+            catch (CustomException ex)
+            {
+                return StatusCode(ex.StatusCode, new { Error = ex.Message });
+            }
             catch (Exception ex)
             {
                 return BadRequest(new { Error = ex.Message });
@@ -113,7 +117,7 @@ namespace Tutorial.Controllers
             try
             {
                 await _itemService.DeleteItem((HttpContext.Items["User"] as User)!, itemId);
-                return Ok();
+                return Ok("Item is deleted.");
             }
             catch (CustomException ex)
             {
@@ -133,7 +137,7 @@ namespace Tutorial.Controllers
             try
             {
                 await _itemService.DeleteAllItems();
-                return Ok();
+                return Ok("All items deleted.");
             }
             catch (CustomException ex)
             {

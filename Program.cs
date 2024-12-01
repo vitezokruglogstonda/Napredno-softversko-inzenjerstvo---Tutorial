@@ -25,6 +25,8 @@ builder.Services.AddScoped<IItemService, ItemService>();
 //Bind classes to objects in appsettings.json
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
+builder.Services.AddControllers();
+
 //Setup CORS
 builder.Services.AddCors(options =>
 {
@@ -53,6 +55,8 @@ app.UseCors("AllowOrigin");
 
 app.UseMiddleware<AuthMiddleware>();
 
-//app.UseAuthorization();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
