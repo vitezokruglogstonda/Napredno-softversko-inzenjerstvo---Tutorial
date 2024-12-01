@@ -2,7 +2,11 @@
 
 # ASP.NET Core API
 
-Ovaj repozitorijum sadrži primer API-ja razvijenog u ASP.NET Core-u za demonstraciju RESTful API-ja, korišćenje EF Core-a i JWT autentifikacije.
+Ovaj repozitorijum sadrži primer aplikacije razvijene u ASP.NET Core-u za demonstraciju RESTful API-ja, korišćenje EF Core-a za implementaciju biznis logike i rad sa bazama, kao i Redis kes za privremeno cuvanje podataka.
+Aplikacija je dizajnirana da bude skalabilna i bezbedna uz primenu JWT autentifikacije.
+ASP.NET Core ima mogućnosti rada na različitim platformama, vrhunskih performansi, jednostavne integracije sa modernim alatima i bibliotekama, kao i dugoročne stabilnosti koju garantuje podrška kompanije Microsoft.
+Ovo resenje omogucava razvoj savremenih veb aplikacija koje su brze, fleksibilne i pouzdane.
+Za razliku od npr. Spring Boot-a, nudi superiornije performanse, i laksu integraciju sa Microsoft-ovim servisima poput Azure-a, i mnogih drugih.
 
 ---
 
@@ -94,3 +98,4 @@ Pokrenite aplikaciju koristeći sledeću komandu:
 [![Run](https://img.shields.io/badge/dotnet-run-blue?style=flat-square&logo=.net)](data:text/plain;charset=utf-8;base64,LmRvdG5ldCBydW4K)
 ```bash
 dotnet run
+```
